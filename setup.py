@@ -59,7 +59,7 @@ setup(
     install_requires=[],
     license="BSD",
     zip_safe=False,
-    keywords='dj-exo-populator',
+    keywords='lib-exo-populator',
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Framework :: Django :: 1.11',

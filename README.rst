@@ -2,28 +2,28 @@
 exo_populator
 =============================
 
-.. image:: https://badge.fury.io/py/dj-exo-populator.svg
-    :target: https://badge.fury.io/py/dj-exo-populator
+.. image:: https://badge.fury.io/py/lib-exo-populator.svg
+    :target: https://badge.fury.io/py/lib-exo-populator
 
-.. image:: https://travis-ci.org/tomasgarzon/dj-exo-populator.svg?branch=master
-    :target: https://travis-ci.org/tomasgarzon/dj-exo-populator
+.. image:: https://travis-ci.org/exolever/lib-exo-populator.svg?branch=master
+    :target: https://travis-ci.org/exolever/lib-exo-populator
 
-.. image:: https://codecov.io/gh/tomasgarzon/dj-exo-populator/branch/master/graph/badge.svg
-    :target: https://codecov.io/gh/tomasgarzon/dj-exo-populator
+.. image:: https://codecov.io/gh/exolever/lib-exo-populator/branch/master/graph/badge.svg
+    :target: https://codecov.io/gh/exolever/lib-exo-populator
 
 Generic populate models in django from YAML files
 
 Documentation
 -------------
 
-The full documentation is at https://dj-exo-populator.readthedocs.io.
+The full documentation is at https://lib-exo-populator.readthedocs.io.
 
 Quickstart
 ----------
 
 Install exo_populator::
 
-    pip install dj-exo-populator
+    pip install lib-exo-populator
 
 Add it to your `INSTALLED_APPS`:
 
