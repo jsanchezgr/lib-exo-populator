@@ -5,5 +5,5 @@ from django.conf.urls import url, include
 
 
 urlpatterns = [
-    url(r'^', include('populate.urls', namespace='populate')),
+
 ]
