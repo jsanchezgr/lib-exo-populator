@@ -173,7 +173,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'dj-exo-populatordoc'
+htmlhelp_basename = 'lib-exo-populatordoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -192,7 +192,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'dj-exo-populator.tex', u'exo_populator Documentation',
+  ('index', 'lib-exo-populator.tex', u'exo_populator Documentation',
    u'Tomas Garzon', 'manual'),
 ]
 
@@ -222,7 +222,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'dj-exo-populator', u'exo_populator Documentation',
+    ('index', 'lib-exo-populator', u'exo_populator Documentation',
      [u'Tomas Garzon'], 1)
 ]
 
@@ -236,8 +236,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'dj-exo-populator', u'exo_populator Documentation',
-   u'Tomas Garzon', 'dj-exo-populator', 'One line description of project.',
+  ('index', 'lib-exo-populator', u'exo_populator Documentation',
+   u'Tomas Garzon', 'lib-exo-populator', 'One line description of project.',
    'Miscellaneous'),
 ]
 

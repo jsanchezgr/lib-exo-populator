@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 
 """
-test_dj-exo-populator
+test_lib-exo-populator
 ------------
 
-Tests for `dj-exo-populator` models module.
+Tests for `lib-exo-populator` models module.
 """
 
 from django.test import TestCase
