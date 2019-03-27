@@ -21,9 +21,6 @@ def get_version(*file_paths):
     raise RuntimeError('Unable to find version string.')
 
 
-version = get_version("populate", "__init__.py")
-
-
 if sys.argv[-1] == 'publish':
     try:
         import wheel
@@ -46,7 +43,7 @@ history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
 setup(
     name='lib-exo-populator',
-    version=version,
+    version='0.1.0',
     description="""Generic populate models in django from YAML files""",
     long_description=readme + '\n\n' + history,
     author='Tomas Garzon',
