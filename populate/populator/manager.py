@@ -48,7 +48,7 @@ class Manager(ABC):
         path = '{base_dir}{file_path}'.format(
             base_dir=BASE_DIR, file_path=self.files_path)
         file_obj = open('{}{}.yml'.format(path, self.normalize(value)))
-        data = yaml.load(file_obj)
+        data = yaml.load(file_obj, Loader=yaml.Loader)
         file_obj.close()
         return data
 
