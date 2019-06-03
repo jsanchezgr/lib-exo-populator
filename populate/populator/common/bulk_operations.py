@@ -8,11 +8,12 @@ from django.conf import settings
 
 
 class BulkOperations:
-    def __init__(self, entity):
+    def __init__(self, entity, cmd):
         self.entity = entity
         self.model = '{0}Manager'.format(
             stringcase.titlecase(entity).replace(" ", ""))
         self.root_path = settings.BASE_DIR
+        self.cmd = cmd
 
     def populate(self):
         allowed = settings.POPULATE_ALLOWED_POPULATE_ENTITIES
@@ -22,7 +23,7 @@ class BulkOperations:
                 module = importlib.import_module(
                     'populator.{0}.{0}_manager'.format(self.entity))
                 class_ = getattr(module, self.model)
-                result.append(class_().get_object(item).id)
+                result.append(class_(stdout=self.cmd.stdout, stderr=self.cmd.stderr).get_object(item).id)
         else:
             result = 'Skipped'
         return result

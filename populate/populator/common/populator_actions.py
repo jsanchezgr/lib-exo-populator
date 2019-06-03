@@ -10,9 +10,9 @@ from populate.populator.status import PopulateStatus
 
 
 class PopulatorActions:
-    def __init__(self):
+    def __init__(self, stdout, stderr):
         self.status = PopulateStatus()
-        self.cmd = BaseCommand()
+        self.cmd = BaseCommand(stdout=stdout, stderr=stderr)
 
     def get_status(self):
         return self.status.get_status()
@@ -20,7 +20,7 @@ class PopulatorActions:
     def populate(self, items):
         results = {}
         for item in items:
-            results[item] = BulkOperations(entity=item).populate()
+            results[item] = BulkOperations(entity=item, cmd=self.cmd).populate()
         self.sql_sequence_reset()
         self.status.set_populated()
         return results
@@ -28,10 +28,10 @@ class PopulatorActions:
     def init(self):
         self.status.set_initialized()
         # Execute migrations
-        call_command('migrate')
+        call_command('migrate', stdout=self.cmd.stdout, stderr=self.cmd.stderr)
 
     def finish_flag(self):
-        print('\n\n\n\n\n\n')
+        self.cmd.stdout.write('\n\n\n\n\n\n')
         self.cmd.stdout.write(
             self.cmd.style.SUCCESS('Populator succesfully finished!'))
 
@@ -40,7 +40,8 @@ class PopulatorActions:
             sql = call_command(
                 'sqlsequencereset',
                 *settings.POPULATE_REQUIRED_SEQUENCE_RESET_MODELS,
-                no_color=True)
+                no_color=True,
+                stdout=self.cmd.stdout, stderr=self.cmd.stderr)
             with connection.cursor() as cursor:
                 cursor.execute(sql)
 

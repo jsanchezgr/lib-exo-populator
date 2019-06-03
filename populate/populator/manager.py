@@ -7,11 +7,14 @@ from populator import BASE_DIR
 
 
 class Manager(ABC):
-    cmd = BaseCommand()
     builder = None
     model = None
     attribute = None
     files_path = None
+
+    def __init__(self, stdout, stderr):
+        self.cmd = BaseCommand(stdout=stdout, stderr=stderr)
+        super().__init__()
 
     def get_object(self, value):
         attr_value = value
@@ -23,7 +26,7 @@ class Manager(ABC):
         except self.model.DoesNotExist:
             data = self.load_file(attr_value)
             if isinstance(data, dict):
-                print('Parsing {0} {1}...'.format(
+                self.cmd.stdout.write('Parsing {0} {1}...'.format(
                     self.model.__name__, attr_value))
                 try:
                     object = self.model.objects.get(

@@ -13,9 +13,9 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         self.stdout.write('\n Populating {}: \n\n'.format(settings.SERVICE_NAME))
 
-        fm = FileManager()
+        fm = FileManager(self.stdout, self.stderr)
         fm.prepare_regression_files()
-        actions = PopulatorActions()
+        actions = PopulatorActions(self.stdout, self.stderr)
         actions.populate(settings.POPULATE_ALLOWED_POPULATE_ENTITIES)
         fm.clear_files()
         actions.finish_flag()

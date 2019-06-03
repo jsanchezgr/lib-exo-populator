@@ -7,10 +7,10 @@ from django.conf import settings
 
 class FileManager:
 
-    def __init__(self):
+    def __init__(self, stdout, stderr):
         self.target_path = '{}/populator'.format(settings.BASE_DIR)
         self.regression_path = '{0}/populator/data/'.format(settings.BASE_DIR)
-        self.cmd = BaseCommand()
+        self.cmd = BaseCommand(stdout=stdout, stderr=stderr)
 
     def clear_files(self):
         for f in settings.POPULATE_ALLOWED_DATA_FOLDERS:

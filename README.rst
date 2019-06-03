@@ -5,11 +5,18 @@ exo_populator
 .. image:: https://badge.fury.io/py/lib-exo-populator.svg
     :target: https://badge.fury.io/py/lib-exo-populator
 
+.. image:: https://requires.io/github/exolever/lib-exo-populator/requirements.svg?branch=master
+     :target: https://requires.io/github/exolever/lib-exo-populator/requirements/?branch=master
+     :alt: Requirements Status
+
 .. image:: https://travis-ci.org/exolever/lib-exo-populator.svg?branch=master
     :target: https://travis-ci.org/exolever/lib-exo-populator
 
-.. image:: https://codecov.io/gh/exolever/lib-exo-populator/branch/master/graph/badge.svg
+.. image:: https://codecov.io/gh/exolever//branch/master/graph/badge.svg
     :target: https://codecov.io/gh/exolever/lib-exo-populator
+
+.. image:: https://sonarcloud.io/api/project_badges/measure?project=exolever_lib_exo_populator&metric=alert_status
+   :target: https://sonarcloud.io/dashboard?id=exolever_lib_exo_populator
 
 Generic populate models in django from YAML files
 

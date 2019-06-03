@@ -1,12 +1,26 @@
-
-# Config file for automatic testing at travis-ci.org
-sudo: required
-
-services:
-  - docker
-
-# command to run tests using coverage, e.g. python setup.py test
+sudo: false
+language: python
+cache: pip
+python: 3.6
+matrix:
+  fast_finish: true
+addons:
+  sonarcloud:
+    organization: openexo
+install: pip install -r requirements_test.txt
 script:
-  docker build .
+- tox
+- sonar-scanner
+deploy:
+  provider: pypi
+  distributions: sdist bdist_wheel
+  twine_version: 1.13.0
+  user: tomasgarzon
+  password:
+    secure: JhZzQRgVl617c+aCy2PWFjZSY5I0aSwHTceq7Zolh+iXunAH2lOatudXZYw160xGqH+4V5ftH8Jw6lLM5EU+xJMr17fumGzLZYsRCrWzS9GhETcxkZp7AXwqAF39UXKK67pbVAcr8Se7nAeNUugoq3WjDHsu0aNIYuYaAanrALUeCxuHl0ufhNM6i0GZw+yreRms/9v7TbkNMAwZFmOYmrtlR4PqoUDUKbfAaPHL5mcfVJXj2thqOd9mNui7pYKRY6HpnqHitr4MkJKO9+BSMzdO3vrXi4VACFL1gcNr32fhKTftdtX98RAzaV1qZ+ysdUQnZwBEQoHMmpiNdtNjkW5Sf5CNJsIQDhmQHmIc7yq3Fc0nP+56ncn2rChaI9rsrmVUgprlYkxIkFvm2nHGwKa+0qfIYep/53zqcER/6zoCfjBKEicOCDt+dsh5SO1vUVVRBT9eB0E2bDt8HCGGmyEZuRk5OQP4VcYNguKtcRXoq1pb1kceDX/bKgM27l/4ixHyzXVBMHQ7vgngJOxB37lU9PPagU1fF0lGl5NNfqBOahW+mL9oOAIQUT3PWxN/ve44HkvsrJwOLageHEItlm93dxiQJoBjyqKnYcUJEcsY2D29M9+hFbmnwbLbAGf1oY0u3TOL5gGQqnOkb3UVVyXZ3a+haTouh1NdvTfYwYM=
+  on:
+    tags: true
+    repo: exolever/lib-exo-populator
+    python: 3.6
 after_success:
-  - codecov -e TOX_ENV
+- codecov
