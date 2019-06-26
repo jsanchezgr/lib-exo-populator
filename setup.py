@@ -56,7 +56,10 @@ setup(
         'populate',
     ],
     include_package_data=True,
-    install_requires=[],
+    install_requires=[
+        'singleton-decorator>=1.0.0',
+        'stringcase>=1.2.0',
+    ],
     license="BSD",
     zip_safe=False,
     keywords='lib-exo-populator',

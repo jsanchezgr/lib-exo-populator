@@ -7,7 +7,7 @@ matrix:
 addons:
   sonarcloud:
     organization: openexo
-install: pip install -r requirements_test.txt
+install: pip install -r requirements/requirements_test.txt
 script:
 - tox
 - sonar-scanner

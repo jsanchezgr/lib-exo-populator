@@ -26,7 +26,7 @@ class FileManager:
                 os.unlink(src_file)
             elif self.is_dir(src_file):
                 self.delete(src_file)
-                os.rmdir(src_file)
+                shutil.rmtree(src_file)
 
     def prepare_regression_files(self):
         for folder in os.listdir(self.regression_path):
