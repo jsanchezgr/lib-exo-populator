@@ -26,10 +26,6 @@ exo_populator
 
 Generic populate models in django from YAML files
 
-Documentation
--------------
-
-The full documentation is at https://lib-exo-populator.readthedocs.io.
 
 Quickstart
 ----------
