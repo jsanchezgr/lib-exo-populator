@@ -40,27 +40,9 @@ Add it to your `INSTALLED_APPS`:
 
     INSTALLED_APPS = (
         ...
-        'populate.apps.PopulateConfig',
+        'populate',
         ...
     )
-
-Add exo_populator's URL patterns:
-
-.. code-block:: python
-
-    from populate import urls as populate_urls
-
-
-    urlpatterns = [
-        ...
-        url(r'^', include(populate_urls)),
-        ...
-    ]
-
-Features
---------
-
-* TODO
 
 Running Tests
 -------------
