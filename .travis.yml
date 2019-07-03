@@ -1,16 +1,21 @@
-sudo: false
-language: python
-cache: pip
-python: 3.6
+# Config file for automatic testing at travis-ci.org
+sudo: required
+
 matrix:
   fast_finish: true
+
 addons:
   sonarcloud:
     organization: openexo
-install: pip install -r requirements/requirements_test.txt
+
+services:
+  docker
+
+# command to run tests using coverage, e.g. python setup.py test
 script:
-- tox
-- sonar-scanner
+  docker build -t django-exo-mentions .
+  sonar-scanner
+
 deploy:
   provider: pypi
   distributions: sdist bdist_wheel
@@ -22,5 +27,6 @@ deploy:
     tags: true
     repo: exolever/lib-exo-populator
     python: 3.6
+
 after_success:
-- codecov
+  codecov -e TOX_ENV
