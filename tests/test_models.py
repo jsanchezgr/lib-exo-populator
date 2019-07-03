@@ -10,7 +10,9 @@ Tests for `lib-exo-populator` models module.
 
 from django.test import TestCase
 
-from populate import models
+from populate import models     # noqa
+from stringcase import *    # noqa
+from singleton_decorator import singleton   # noqa
 
 
 class TestPopulate(TestCase):
