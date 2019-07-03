@@ -13,7 +13,7 @@ services:
 
 # command to run tests using coverage, e.g. python setup.py test
 script:
-  - docker build -t django-exo-mentions .
+  - docker build -t lib-exo-populator .
   - sonar-scanner
 
 deploy:
