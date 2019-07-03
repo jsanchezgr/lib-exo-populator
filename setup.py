@@ -2,16 +2,12 @@
 # -*- coding: utf-8 -*-
 import os
 import re
-import sys
 
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+from setuptools import setup, find_packages
 
 
 def get_version(*file_paths):
-    """Retrieves the version from populate/__init__.py"""
+    """Retrieves the version from ratings/__init__.py"""
     filename = os.path.join(os.path.dirname(__file__), *file_paths)
     version_file = open(filename).read()
     version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]",
@@ -23,24 +19,6 @@ def get_version(*file_paths):
 
 version = get_version("populate", "__init__.py")
 
-
-if sys.argv[-1] == 'publish':
-    try:
-        import wheel
-        print("Wheel version: ", wheel.__version__)
-    except ImportError:
-        print('Wheel library missing. Please run "pip install wheel"')
-        sys.exit()
-    os.system('python setup.py sdist upload')
-    os.system('python setup.py bdist_wheel upload')
-    sys.exit()
-
-if sys.argv[-1] == 'tag':
-    print("Tagging the version on git:")
-    os.system("git tag -a %s -m 'version %s'" % (version, version))
-    os.system("git push --tags")
-    sys.exit()
-
 readme = open('README.rst').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
@@ -50,11 +28,9 @@ setup(
     description="""Generic populate models in django from YAML files""",
     long_description=readme + '\n\n' + history,
     author='Tomas Garzon',
-    author_email='tomas@exolever.com',
+    author_email='tomas@openexo.com',
     url='https://github.com/exolever/lib-exo-populator',
-    packages=[
-        'populate',
-    ],
+    packages=find_packages(),
     include_package_data=True,
     install_requires=[
         'singleton-decorator>=1.0.0',
