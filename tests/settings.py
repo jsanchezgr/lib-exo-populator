@@ -9,6 +9,7 @@ USE_TZ = True
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "!wp4(eoxkjo%70^83j4b@(e*s_*%&&s@^6^3hl+)$z=w6y4-km"
 
+print("\nENVIRON", os.environ)
 
 if 'TRAVIS' in os.environ:
     DATABASES = {
