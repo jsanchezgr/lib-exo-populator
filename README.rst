@@ -1,5 +1,5 @@
 =============================
-exo_populator
+lib-exo-populator
 =============================
 
 .. image:: https://badge.fury.io/py/lib-exo-populator.svg
