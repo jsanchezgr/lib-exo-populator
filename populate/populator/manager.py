@@ -11,6 +11,7 @@ class Manager(ABC):
     model = None
     attribute = None
     files_path = None
+    manager = 'objects'
 
     def __init__(self, stdout, stderr):
         self.cmd = BaseCommand(stdout=stdout, stderr=stderr)
@@ -21,7 +22,7 @@ class Manager(ABC):
         if isinstance(value, dict):
             attr_value = value.get(self.attribute)
         try:
-            return self.model.objects.get(
+            return getattr(self.model, self.manager).get(
                 **self.build_expression(attr_value))
         except self.model.DoesNotExist:
             data = self.load_file(attr_value)
@@ -29,7 +30,7 @@ class Manager(ABC):
                 self.cmd.stdout.write('Parsing {0} {1}...'.format(
                     self.model.__name__, attr_value))
                 try:
-                    object = self.model.objects.get(
+                    object = getattr(self.model, self.manager).get(
                         **self.build_expression(attr_value))
                     self.output_warn(object, 'already exists!')
                     return object
