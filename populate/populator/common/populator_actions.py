@@ -5,6 +5,7 @@ from django.core.management import call_command
 from django.db import connection
 from django.conf import settings
 
+from populate.define_signals import post_populate
 from populate.populator.common.bulk_operations import BulkOperations
 from populate.populator.status import PopulateStatus
 
@@ -22,6 +23,7 @@ class PopulatorActions:
         for item in items:
             results[item] = BulkOperations(entity=item, cmd=self.cmd).populate()
         self.sql_sequence_reset()
+        post_populate.send()
         self.status.set_populated()
         return results
 
