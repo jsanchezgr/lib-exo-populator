@@ -5,7 +5,7 @@ from django.core.management import call_command
 from django.db import connection
 from django.conf import settings
 
-from populate.define_signals import post_populate
+from populate.define_signals import post_populate, post_migrate
 from populate.populator.common.bulk_operations import BulkOperations
 from populate.populator.status import PopulateStatus
 
@@ -31,6 +31,7 @@ class PopulatorActions:
         self.status.set_initialized()
         # Execute migrations
         call_command('migrate', stdout=self.cmd.stdout, stderr=self.cmd.stderr)
+        post_migrate.send(sender=PopulateConfig)
 
     def finish_flag(self):
         self.cmd.stdout.write('\n\n\n\n\n\n')
