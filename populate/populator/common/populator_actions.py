@@ -8,6 +8,7 @@ from django.conf import settings
 from populate.define_signals import post_populate, post_migrate
 from populate.populator.common.bulk_operations import BulkOperations
 from populate.populator.status import PopulateStatus
+from populate.apps import PopulateConfig
 
 
 class PopulatorActions:
@@ -23,7 +24,7 @@ class PopulatorActions:
         for item in items:
             results[item] = BulkOperations(entity=item, cmd=self.cmd).populate()
         self.sql_sequence_reset()
-        post_populate.send()
+        post_populate.send(sender=PopulateConfig)
         self.status.set_populated()
         return results
 
