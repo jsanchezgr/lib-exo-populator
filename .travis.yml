@@ -24,7 +24,7 @@ before_script:
 
 script:
   - tox
-  - sonar-scanner
+#  - sonar-scanner
 
 deploy:
   provider: pypi
